@@ -1,12 +1,15 @@
 var saveFile = require('../modules/saveFile');
 var fs = require('fs');
+var path = require('path');
+
+var sampleCv;
 
 
 before(done => {
 
-  var sampleCv = fs.readFileSync('./cv.doc');
+  sampleCv = fs.readFileSync(__dirname + '/cv.doc');
 
-  console.log(sampleCv);
+  done();
 
 });
 
@@ -14,11 +17,13 @@ describe('#saveFile', done => {
 
   it('should save a file without errors', done => {
 
-    saveFile(saveFile).then(res => {
+    saveFile('cv-test.doc', sampleCv).then(res => {
 
       console.log(res);
 
-    });
+      done();
+
+    }).catch(err => console.log(err));
 
   });
 
