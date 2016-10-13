@@ -18,4 +18,4 @@ function getFile(fileName, buffer) {
 
 }
 
-module.exports = saveFile;
+module.exports = getFile;
