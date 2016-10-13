@@ -46,8 +46,18 @@ function registerUser(req, res) {
         });
 }
 
+function putUser(req, res) {
+    User.findOne(req.body)
+        .then(user => {
+            user.cv = req.body.cv;
+        });
+}
+
+function serveCV(req, res) {
+
+}
+
 const login = authMiddleware;
 
 module.exports = (server) => {
-    server.get
 };
